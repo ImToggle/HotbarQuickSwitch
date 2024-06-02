@@ -20,22 +20,24 @@ enum class ItemTypes(val displayName: String, val type: Any, val renderItem: Ite
     WaterBucket("Water Bucket", Items.water_bucket, Items.water_bucket),
     LavaBucket("Lava Bucket", Items.lava_bucket, Items.lava_bucket);
 
-    fun getRenderItem(index: Int): Item {
-        for (i in entries) {
-            if (i.ordinal == index) {
-                return i.renderItem
+    companion object {
+        fun getRenderItem(index: Int): Item {
+            for (i in entries) {
+                if (i.ordinal == index) {
+                    return i.renderItem
+                }
             }
+            return Item.getItemFromBlock(Blocks.air)
         }
-        return Item.getItemFromBlock(Blocks.air)
-    }
 
-    fun getType(name: String): Any {
-        for (i in entries) {
-            if (i.displayName == name) {
-                return i.type
+        fun getType(name: String): Any {
+            for (i in entries) {
+                if (i.displayName == name) {
+                    return i.type
+                }
             }
+            return ItemBlock::class.java
         }
-        return ItemBlock::class.java
     }
 
 }
