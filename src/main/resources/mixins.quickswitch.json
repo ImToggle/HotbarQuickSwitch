@@ -1,10 +1,13 @@
 {
   "compatibilityLevel": "JAVA_8",
   "minVersion": "0.7",
-  "package": "me.imtoggle.testmod.mixin",
+  "package": "me.imtoggle.quickswitch.mixin",
   "refmap": "mixins.testmod.refmap.json",
   "injectors": {
     "maxShiftBy": 5
   },
-  "verbose": true
+  "verbose": true,
+  "mixins": [
+    "KeyBindHandlerAccessor"
+  ]
 }
