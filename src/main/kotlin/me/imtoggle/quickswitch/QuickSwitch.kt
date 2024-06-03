@@ -1,5 +1,9 @@
 package me.imtoggle.quickswitch
 
+import cc.polyfrost.oneconfig.events.EventManager
+import cc.polyfrost.oneconfig.events.event.Stage
+import cc.polyfrost.oneconfig.events.event.TickEvent
+import cc.polyfrost.oneconfig.libs.eventbus.Subscribe
 import cc.polyfrost.oneconfig.utils.dsl.mc
 import me.imtoggle.quickswitch.config.ModConfig
 import net.minecraft.item.Item
@@ -15,6 +19,16 @@ object QuickSwitch {
     @Mod.EventHandler
     fun onInit(event: FMLInitializationEvent) {
         ModConfig
+        EventManager.INSTANCE.register(this)
+    }
+
+    var switchQueue = -1
+
+    @Subscribe
+    fun onTickEnd(e: TickEvent) {
+        if (e.stage != Stage.END || switchQueue == -1) return
+        mc.thePlayer.inventory.currentItem = switchQueue
+        switchQueue = -1
     }
 
     fun switchTo(type: Any): Boolean {
@@ -27,7 +41,7 @@ object QuickSwitch {
                 itemStack.stackSize
             }?.index
         index?.let {
-            mc.thePlayer.inventory.currentItem = it
+            switchQueue = it
             return true
         }
         return false

@@ -8,18 +8,14 @@ import cc.polyfrost.oneconfig.config.data.*
 import cc.polyfrost.oneconfig.config.elements.BasicOption
 import cc.polyfrost.oneconfig.config.elements.OptionPage
 import cc.polyfrost.oneconfig.internal.config.core.KeyBindHandler
-import me.imtoggle.quickswitch.KeyBindsRenderer
+import me.imtoggle.quickswitch.MainRenderer
 import me.imtoggle.quickswitch.QuickSwitch
-import me.imtoggle.quickswitch.Selector
 import me.imtoggle.quickswitch.mixin.KeyBindHandlerAccessor
 import java.lang.reflect.Field
 
 object ModConfig : Config(Mod(QuickSwitch.NAME, ModType.UTIL_QOL), "${QuickSwitch.MODID}.json") {
 
-    @CustomOption(id = "selector")
-    var selector = Runnable {  }
-
-    @CustomOption(id = "renderer")
+    @CustomOption
     var entries = ArrayList<KeyBindEntry>()
 
     fun addKeyBind(map: MutableMap.MutableEntry<Field?, Any?>, keyBind: OneKeyBind) {
@@ -36,13 +32,8 @@ object ModConfig : Config(Mod(QuickSwitch.NAME, ModType.UTIL_QOL), "${QuickSwitc
         page: OptionPage,
         mod: Mod,
         migrate: Boolean
-    ): BasicOption? {
-        var option: BasicOption? = null
-        when (annotation.id) {
-            "renderer" -> option = KeyBindsRenderer
-            "selector" -> option = Selector
-        }
-
+    ): BasicOption {
+        val option = MainRenderer
         ConfigUtils.getSubCategory(page, "General", "").options.add(option)
         return option
     }

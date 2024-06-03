@@ -4,7 +4,7 @@ import cc.polyfrost.oneconfig.config.annotations.Exclude
 import cc.polyfrost.oneconfig.config.core.OneKeyBind
 import cc.polyfrost.oneconfig.libs.universal.UKeyboard
 import me.imtoggle.quickswitch.ItemTypes
-import me.imtoggle.quickswitch.KeyBindsRenderer
+import me.imtoggle.quickswitch.MainRenderer
 import me.imtoggle.quickswitch.QuickSwitch
 import me.imtoggle.quickswitch.element.KeyBindElement
 import java.lang.reflect.Field
@@ -29,7 +29,9 @@ class KeyBindEntry {
     fun onAdd() {
         keyBind.setRunnable { run() }
         ModConfig.addKeyBind(map, keyBind)
-        KeyBindsRenderer.keyElements.add(KeyBindElement(this))
+        val element = KeyBindElement(this)
+        itemTypes.forEach { element.addItem(it, -1, true) }
+        MainRenderer.keyElements.add(element)
     }
 
     fun onRemove() {
