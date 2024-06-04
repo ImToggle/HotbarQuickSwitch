@@ -3,7 +3,7 @@ package me.imtoggle.quickswitch.config
 import cc.polyfrost.oneconfig.config.annotations.Exclude
 import cc.polyfrost.oneconfig.config.core.OneKeyBind
 import cc.polyfrost.oneconfig.libs.universal.UKeyboard
-import me.imtoggle.quickswitch.ItemTypes
+import me.imtoggle.quickswitch.util.ItemTypes
 import me.imtoggle.quickswitch.MainRenderer
 import me.imtoggle.quickswitch.QuickSwitch
 import me.imtoggle.quickswitch.element.KeyBindElement

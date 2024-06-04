@@ -8,7 +8,7 @@ import cc.polyfrost.oneconfig.libs.universal.UResolution
 import cc.polyfrost.oneconfig.utils.InputHandler
 import cc.polyfrost.oneconfig.utils.color.ColorPalette
 import cc.polyfrost.oneconfig.utils.dsl.mc
-import me.imtoggle.quickswitch.ItemTypes
+import me.imtoggle.quickswitch.util.ItemTypes
 import me.imtoggle.quickswitch.MainRenderer
 import me.imtoggle.quickswitch.util.EaseOutQuart
 import net.minecraft.client.renderer.GlStateManager

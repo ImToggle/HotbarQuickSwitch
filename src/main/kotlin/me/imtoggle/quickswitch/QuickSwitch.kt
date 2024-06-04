@@ -32,14 +32,19 @@ object QuickSwitch {
     }
 
     fun switchTo(type: Any): Boolean {
-        val index = mc.thePlayer. inventory.mainInventory
+        val hotbar = mc.thePlayer. inventory.mainInventory
             .slice(0..8)
             .withIndex()
-            .filter { (_, itemStack) ->
+        val index = if (type is Int) {
+            hotbar.firstOrNull { (_, itemStack) -> itemStack == null }?.index
+        } else {
+            hotbar.filter { (_, itemStack) ->
                 itemStack != null && itemStack.item.isFrom(type)
             }.maxByOrNull { (_, itemStack) ->
                 itemStack.stackSize
             }?.index
+        }
+
         index?.let {
             switchQueue = it
             return true

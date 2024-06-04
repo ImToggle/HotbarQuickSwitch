@@ -1,4 +1,4 @@
-package me.imtoggle.quickswitch
+package me.imtoggle.quickswitch.util
 
 import net.minecraft.init.*
 import net.minecraft.item.*
@@ -16,9 +16,12 @@ enum class ItemTypes(val type: Any, val renderItem: Item) {
     Egg(ItemEgg::class.java, Items.egg),
     Snowball(ItemSnowball::class.java, Items.snowball),
     EnderPearl(ItemEnderPearl::class.java, Items.ender_pearl),
+    Fireball(ItemFireball::class.java, Items.fire_charge),
+    Food(ItemFood::class.java, Items.golden_apple),
     Bucket(Items.bucket, Items.bucket),
     WaterBucket(Items.water_bucket, Items.water_bucket),
-    LavaBucket(Items.lava_bucket, Items.lava_bucket);
+    LavaBucket(Items.lava_bucket, Items.lava_bucket),
+    NONE(0, Item.getItemFromBlock(Blocks.barrier));
 
     companion object {
         fun getRenderItem(index: Int): Item {

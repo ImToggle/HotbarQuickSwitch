@@ -1,7 +1,7 @@
-package me.imtoggle.quickswitch
+package me.imtoggle.quickswitch.element
 
 import cc.polyfrost.oneconfig.utils.InputHandler
-import me.imtoggle.quickswitch.element.ItemTypeElement
+import me.imtoggle.quickswitch.util.ItemTypes
 
 object Selector {
 
